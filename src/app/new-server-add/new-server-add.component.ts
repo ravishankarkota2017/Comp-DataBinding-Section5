@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from "@angular/core";
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from "@angular/core";
 
 @Component({
   selector: "app-new-server-add",
@@ -6,9 +6,15 @@ import { Component, OnInit, EventEmitter, Output } from "@angular/core";
   styleUrls: ["./new-server-add.component.css"]
 })
 export class NewServerAddComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
-  str1 = new EventEmitter<string>();
+
+  @ViewChild('newServerContent') inputServerContent:ElementRef
+
+  constructor() {
+    
+  }
+  ngOnInit() {
+    console.log(this.inputServerContent); 
+  }
 
   @Output()
   serverCreated = new EventEmitter<{
@@ -21,22 +27,21 @@ export class NewServerAddComponent implements OnInit {
     serverContent: string;
   }>();
 
-  newServerName: string = "Zen-Test-Server";
-  newServerContent: string = "A Test Server for new Projects";
+ // newServerName: string = "Zen-Test-Server";
+ // newServerContent: string = "";
 
-  onAddServer() {
+  onAddServer(inputServerName: HTMLInputElement) {
+    console.log(inputServerName);
     this.serverCreated.emit({
-      serverName: this.newServerName,
-      serverContent: this.newServerContent
+      serverName: inputServerName.value,
+      serverContent: this.inputServerContent.nativeElement.value
     });
-
-    this.str1.emit("test");
   }
 
-  onAddBlueprint() {
+  onAddBlueprint(inputServerName: HTMLInputElement) {
     this.blueprintCreated.emit({
-      serverName: this.newServerName,
-      serverContent: this.newServerContent
+      serverName: inputServerName.value,
+      serverContent: this.inputServerContent.nativeElement.value
     });
   }
 }

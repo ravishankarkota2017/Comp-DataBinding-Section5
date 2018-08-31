@@ -1,10 +1,13 @@
 <div class="container">
   <app-new-server-add (serverCreated)="onNewServerAdded($event)" (bpCreated)="onNewBlueprintAdded($event)">
   </app-new-server-add>
-  <hr>
+  <h1>Local Server Elements</h1>
+  <hr style="border: solid 1px blue">
   <app-server-element *ngFor="let ele of serverElements" [serverElement]=ele>
   </app-server-element>
 
+  <h1>Remote server Elements</h1>
+  <hr style="border:solid brown 1px">
   <app-server-element *ngFor="let ele of remoteElements" [serverElement]=ele>
   </app-server-element>
 </div>
