@@ -4,10 +4,18 @@
   <h1>Local Server Elements</h1>
   <hr style="border: solid 1px blue">
   <app-server-element *ngFor="let ele of serverElements" [serverElement]=ele>
+    <p>
+      <strong *ngIf="ele.type === 'server'" style="color: red">{{ ele.content }}</strong>
+      <em *ngIf="ele.type === 'blueprint'">{{ ele.content }}</em>
+    </p>
   </app-server-element>
 
   <h1>Remote server Elements</h1>
   <hr style="border:solid brown 1px">
   <app-server-element *ngFor="let ele of remoteElements" [serverElement]=ele>
+    <p>
+      <strong *ngIf="ele.type === 'server'" style="color: red">{{ ele.content }}</strong>
+      <em *ngIf="ele.type === 'blueprint'">{{ ele.content }}</em>
+    </p>
   </app-server-element>
 </div>
