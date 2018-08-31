@@ -1,0 +1,10 @@
+<div class="container">
+  <app-new-server-add (serverCreated)="onNewServerAdded($event)" (bpCreated)="onNewBlueprintAdded($event)">
+  </app-new-server-add>
+  <hr>
+  <app-server-element *ngFor="let ele of serverElements" [serverElement]=ele>
+  </app-server-element>
+
+  <app-server-element *ngFor="let ele of remoteElements" [serverElement]=ele>
+  </app-server-element>
+</div>
